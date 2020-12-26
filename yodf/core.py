@@ -20,8 +20,6 @@ __all__ = [
     "global_variables_initializer",
 ]
 
-# np.seterr(all='ignore')
-
 
 class TensorType(Enum):
     INT = 1
