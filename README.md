@@ -69,5 +69,3 @@ Examples folder shows use of this library for
 ## Limitiation of forward mode autodiff
 
 Though with forward mode autodiff, derivative of a function with one independent variables gets computed during forward pass itself and no backward pass is needed as is the case with reverse mode autodiff (generalized backpropagation), with multiple indepdent variables (say weights in a neural network), as many passes are needed as number of indepdent variables. So as can be seen in <a href="https://github.com/yogimogi/yodf/blob/master/examples/example3_linear_regression.ipynb">linear regression sample</a>, time needed by gradient descent linearly increases with increase in degree of polynomial you are trying to fit. For MNIST digit classification, this library becomes almost unusable due to large number of independent variables whose gradient needs to be computed.
-
-Execution times will become prohibitively high when trying to fit a model with large number of weights which is typically case with deep neural networks.
