@@ -55,6 +55,16 @@ Would print **<yod.Tensor type=TensorType.INT, shape=(2, 2), operation='sin'>**
 You typically pass a tensor to run method of _Session_ class which ends up evaluating the tensor along with its derivative. Execute method of tensor just knows how to compute derivative of basic arithmatic operations, power function and some of the transcendental functions like sin, cos, log, exp. It also knows how to compute derivative when matrix multiplication operation is involved. By applying the chain rule repeatedly to these operations, derivative of an arbitrary function (represented as a tensor) gets computed automatically. _run_ method simply builds post order traversal tree of the tensor passed to it and evaluates all the nodes in the tree. _GradientDescentOptimizer_ simply updates the value of the variable based on the gradient of the cost tensor passed to its minimize function.  
 When there are multiple independent variables whose partial derivates needs to be computed, gradient of all but one variable whose partial derivative is being computed are set to 0 during computational flow path. This is handled by _GradientDescentOptimizer_ which is not very clean.
 
+## Examples
+
+Examples folder shows use of this library for
+
+1. <a href="https://github.com/yogimogi/yodf/blob/master/examples/example1_simple_cost_function.ipynb">A gradient descent problem for a simple cost function</a>
+2. <a href="https://github.com/yogimogi/yodf/blob/master/examples/example2_cost_function_2_variables.ipynb">A gradient descent problem for a simple cost function with 2 independent variables</a>
+3. <a href="https://github.com/yogimogi/yodf/blob/master/examples/example3_linear_regression.ipynb">A linear regression problem</a>
+4. <a href="https://github.com/yogimogi/yodf/blob/master/examples/example4_logistic_regression.ipynb">A logistic regression problem</a>
+5. <a href="https://github.com/yogimogi/yodf/blob/master/examples/example5_neural_network.ipynb">A neural network with one hidden layer</a>
+
 ## Limitiation of forward mode autodiff
 
 Though with forward mode autodiff, derivative of a function with one independent variables gets computed during forward pass itself and no backward pass is needed as is the case with reverse mode autodiff (generalized backpropagation), with multiple indepdent variables (say weights in a neural network), as many passes are needed as number of indepdent variables. So as can be seen in sample https://github.com/yogimogi/yodf/blob/master/examples/example3_linear_regression.ipynb, time needed by gradient descent linearly increases with increase in degree of polynomial you are trying to fit.  
