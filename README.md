@@ -1,6 +1,6 @@
 ## A 'Hello, World!' forward mode autodiff library.
 
-This library with around 500 lines of code is meant as an illustration of how forward mode autodiff can possibly be implemented. It lets you compute the value and the derivative of a function where function is expressed as a computational flow using the primitives provided by the library. Interface of the library is very similar to Tensorflow 1.15. All the samples provided in _examples_ folder can very well be run if you do **import tensorflow as tf** as opposed to **import yodf as tf**
+This library with around 500 lines of code is meant as an illustration of how forward mode autodiff can possibly be implemented. It lets you compute the value and the derivative of a function which is expressed as a computational flow using the primitives provided by the library. Interface of the library is very similar to Tensorflow 1.15. All the samples provided in _examples_ folder can very well be run if you do **import tensorflow as tf** as opposed to **import yodf as tf** It supports following operations { "add", "subtract", "divide", "multiply", "pow", "sin", "cos", "log", "exp", "matmul", "sigmoid", "reduce_mean", "reduce_sum" }.
 
 ### Installation
 
@@ -53,7 +53,7 @@ print(op_sin)
 
 Would print **<yod.Tensor type=TensorType.INT, shape=(2, 2), operation='sin'>**  
 You typically pass a tensor to run method of _Session_ class which ends up evaluating the tensor along with its derivative. Execute method of tensor just knows how to compute derivative of basic arithmatic operations, power function and some of the transcendental functions like sin, cos, log, exp. It also knows how to compute derivative when matrix multiplication operation is involved. By applying the chain rule repeatedly to these operations, derivative of an arbitrary function (represented as a tensor) gets computed automatically. _run_ method simply builds post order traversal tree of the tensor passed to it and evaluates all the nodes in the tree. _GradientDescentOptimizer_ simply updates the value of the variable based on the gradient of the cost tensor passed to its minimize function.  
-When there are multiple independent variables whose partial derivates needs to be computed, gradient of all but one variable whose partial derivative is being computed are set to 0 during computational flow path. This is handled by _GradientDescentOptimizer_ which is not very clean.
+With multiple independent variables, partial derivative of one variable gets computed at a time. For the rest of the variables gradient is set to 0 during computational flow path. This is handled by _GradientDescentOptimizer_ which is not very clean.
 
 ## Examples
 
@@ -63,9 +63,11 @@ Examples folder shows use of this library for
 2. <a href="https://github.com/yogimogi/yodf/blob/master/examples/example2_cost_function_2_variables.ipynb">A gradient descent problem for a simple cost function with 2 independent variables</a>
 3. <a href="https://github.com/yogimogi/yodf/blob/master/examples/example3_linear_regression.ipynb">A linear regression problem</a>
 4. <a href="https://github.com/yogimogi/yodf/blob/master/examples/example4_logistic_regression.ipynb">A logistic regression problem</a>
-5. <a href="https://github.com/yogimogi/yodf/blob/master/examples/example5_neural_network.ipynb">A neural network with one hidden layer</a>
+5. <a href="https://github.com/yogimogi/yodf/blob/master/examples/example5_neural_network.ipynb">A neural network with one hidden layer and one output</a>
+6. <a href="https://github.com/yogimogi/yodf/blob/master/examples/example6_neural_network_mnist.ipynb">A neural network with one hidden layer and 10 outputs (MNIST digit classification)</a>
 
 ## Limitiation of forward mode autodiff
 
-Though with forward mode autodiff, derivative of a function with one independent variables gets computed during forward pass itself and no backward pass is needed as is the case with reverse mode autodiff (generalized backpropagation), with multiple indepdent variables (say weights in a neural network), as many passes are needed as number of indepdent variables. So as can be seen in <a href="https://github.com/yogimogi/yodf/blob/master/examples/example3_linear_regression.ipynb">Linear Regression sample</a>, time needed by gradient descent linearly increases with increase in degree of polynomial you are trying to fit.  
+Though with forward mode autodiff, derivative of a function with one independent variables gets computed during forward pass itself and no backward pass is needed as is the case with reverse mode autodiff (generalized backpropagation), with multiple indepdent variables (say weights in a neural network), as many passes are needed as number of indepdent variables. So as can be seen in <a href="https://github.com/yogimogi/yodf/blob/master/examples/example3_linear_regression.ipynb">linear regression sample</a>, time needed by gradient descent linearly increases with increase in degree of polynomial you are trying to fit. For MNIST digit classification, this library becomes almost unusable due to large number of independent variables whose gradient needs to be computed.
+
 Execution times will become prohibitively high when trying to fit a model with large number of weights which is typically case with deep neural networks.
