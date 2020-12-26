@@ -1,0 +1,7 @@
+.pytest_cache/
+.vscode/
+.DS_Store
+__pycache__
+poetry.lock
+dist/
+.ipynb_checkpoints
