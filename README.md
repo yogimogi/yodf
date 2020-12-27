@@ -4,7 +4,7 @@ This small (~500 lines) library is meant as an illustration of how forward mode 
 
 ### Installation
 
-**pip install yodf** will install the library. Only dependency it has is _numpy_. Samples provided in examples folder also have dependency on _matplotlib_.
+**pip install yodf** will install the library. Only dependency it has is _numpy_. Samples provided in examples folder also have dependency on _matplotlib_ and _scipy_.
 
 ### Basic usage
 
