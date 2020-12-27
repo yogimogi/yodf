@@ -1,6 +1,6 @@
 ## A 'Hello, World!' forward mode autodiff library.
 
-This small (~500 lines) library is meant as an illustration of how forward mode autodiff can possibly be implemented. It lets you compute the value and the derivative of a function expressed as a computational flow using the primitives provided by the library. Interface of the library is very similar to Tensorflow 1.15. All the samples provided in _examples_ folder can very well be run if you do **import tensorflow as tf** as opposed to **import yodf as tf** It supports following operations { "add", "subtract", "divide", "multiply", "pow", "sin", "cos", "log", "exp", "matmul", "sigmoid", "reduce_mean", "reduce_sum" }.
+This small (~500 lines) library is meant as an illustration of how forward mode autodiff can possibly be implemented. It lets you compute the value and the derivative of a function expressed as a computational flow using the primitives provided by the library. Interface of the library is very similar to Tensorflow 1.\*. All the samples provided in _examples_ folder can very well be run if you do **import tensorflow as tf** as opposed to **import yodf as tf** It supports following operations { "add", "subtract", "divide", "multiply", "pow", "sin", "cos", "log", "exp", "matmul", "sigmoid", "reduce_mean", "reduce_sum" }.
 
 ### Installation
 
