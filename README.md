@@ -61,7 +61,7 @@ print(op_sin)
 ```
 
 You typically pass a tensor to run method of _Session_ class which ends up evaluating the tensor along with its derivative. Execute method of tensor just knows how to compute derivative of basic arithmatic operations, power function and some of the transcendental functions like sin, cos, log, exp. It also knows how to compute derivative when matrix multiplication operation is involved. By applying the chain rule repeatedly to these operations, derivative of an arbitrary function (represented as a tensor) gets computed automatically. _run_ method simply builds post order traversal tree of the tensor passed to it and evaluates all the nodes in the tree. _GradientDescentOptimizer_ simply updates the value of the variable based on the gradient of the cost tensor passed to its minimize function.  
-With multiple independent variables, partial derivative of one variable gets computed at a time. For the rest of the variables gradient is set to 0 during computational flow path. This is handled by _GradientDescentOptimizer_ which is not very clean.
+With multiple independent variables, partial derivative of one variable gets computed at a time while the gradient of rest of the variables is set to 0. This, in turn, is done for all the variables and partial derivatives or the gradients of all the vatiables are accumulated by _GradientDescentOptimizer_ which is not necessarily very clean.
 
 ## Examples
 
