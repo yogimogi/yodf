@@ -16,7 +16,7 @@ x = tf.Variable(5.0)
 cost = x**2
 with tf.Session() as s:
     # global_variables_initializer API added just so as to
-	# resemble Tensorflow, it hardly does anything
+    # resemble Tensorflow, it hardly does anything
     s.run(tf.global_variables_initializer())
     s.run(cost)
 print(x.value, cost.value, cost.gradient)
