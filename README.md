@@ -70,9 +70,10 @@ Examples folder shows use of this library for
 1. <a href="https://github.com/yogimogi/yodf/blob/master/examples/example1_simple_cost_function.ipynb">A gradient descent problem for a simple cost function</a>
 2. <a href="https://github.com/yogimogi/yodf/blob/master/examples/example2_cost_function_2_variables.ipynb">A gradient descent problem for a simple cost function with 2 independent variables</a>
 3. <a href="https://github.com/yogimogi/yodf/blob/master/examples/example3_linear_regression.ipynb">A linear regression problem</a>
-4. <a href="https://github.com/yogimogi/yodf/blob/master/examples/example4_logistic_regression.ipynb">A logistic regression problem</a>
-5. <a href="https://github.com/yogimogi/yodf/blob/master/examples/example5_neural_network.ipynb">A neural network with one hidden layer and one output</a>
-6. <a href="https://github.com/yogimogi/yodf/blob/master/examples/example6_neural_network_mnist.ipynb">A neural network with one hidden layer and 10 outputs (MNIST digit classification)</a>
+4. <a href="https://github.com/yogimogi/yodf/blob/master/examples/example4_linear_regression_sin_x.ipynb">A linear regression problem, fitting sin(x)</a>
+5. <a href="https://github.com/yogimogi/yodf/blob/master/examples/example5_logistic_regression.ipynb">A logistic regression problem</a>
+6. <a href="https://github.com/yogimogi/yodf/blob/master/examples/example6_neural_network.ipynb">A neural network with one hidden layer and one output</a>
+7. <a href="https://github.com/yogimogi/yodf/blob/master/examples/example7_neural_network_mnist.ipynb">A neural network with one hidden layer and 10 outputs (MNIST digit classification)</a>
 
 ## Limitiation of forward mode autodiff
 
